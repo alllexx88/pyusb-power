@@ -16,6 +16,8 @@ options:
                         kernel module(s) to unload before the action, and to load back after the action
 ```
 
+Note the script needs to be run as root.
+
 Motivation
 ===========
 
