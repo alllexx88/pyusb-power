@@ -45,7 +45,7 @@ The script has the following dependencies:
 
 * `libusb-1.0-0`
 * `libusb-0.1-4`
-* `pyusb`
+* `pyusb` >= `1.1.0`
 
 It uses both `libusb1` and `libusb0` backends for two reasons:
 
@@ -65,8 +65,17 @@ yay -Sy libusb0
 ```
 
 ### Ubuntu
+Newer Ubuntu distros (at least, starting from 22.04) have `pyusb==1.2.1` in the official `[universe]` repositories,
+and so all the dependencies can be installed with `apt`:
 
 ```
 sudo apt update
 sudo apt install libusb-1.0-0 libusb-0.1-4 python3-usb
+```
+If you're running an older Ubuntu distro, e.g., 20.04 has `pyusb==1.0.2`, you can install `pyusb` from PyPI:
+
+```
+sudo apt update
+sudo apt install libusb-1.0-0 libusb-0.1-4 python3-pip
+sudo python3 -m pip install pyusb
 ```
