@@ -18,8 +18,7 @@ class RegexArgValidator(object):
 
     def __call__(self, value):
         if not self._pattern.fullmatch(value):
-            raise ArgumentTypeError(
-                "Argument has to match '{}'".format(self._pattern.pattern))
+            raise ArgumentTypeError(f"Argument has to match '{self._pattern.pattern}'")
         return value
 
 
@@ -27,7 +26,7 @@ def main():
     def usb0_dev(dev):
         return usb.core.find(bus=dev.bus, address=dev.address, backend=libusb0.get_backend())
 
-    id_regex = "[0-9a-f]{4}:[0-9a-f]{4}"
+    id_regex = "(?i)[0-9a-f]{4}:[0-9a-f]{4}"  # case-insensitive
 
     parser = ArgumentParser(
         description="Powers off/on usb devices by id",
