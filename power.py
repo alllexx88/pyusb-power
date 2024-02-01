@@ -26,7 +26,7 @@ def main():
     def usb0_dev(dev):
         return usb.core.find(bus=dev.bus, address=dev.address, backend=libusb0.get_backend())
 
-    id_regex = "(?i)[0-9a-f]{4}:[0-9a-f]{4}"  # case-insensitive
+    id_regex = "(?i)0*[0-9a-f]{1,4}:0*[0-9a-f]{1,4}"  # case-insensitive
 
     parser = ArgumentParser(
         description="Powers off/on usb devices by id",
@@ -34,7 +34,8 @@ def main():
     parser.add_argument('action', choices=['cycle', 'off', 'on'],
                         help='action to perform: power-cycle, off or on')
     parser.add_argument("id", type=RegexArgValidator(id_regex),
-                        help="usb device id in the form 'idVendor:idProduct' where both ids are 4-digit hex numbers")
+                        help=("usb device id in the form 'idVendor:idProduct', each id is a hex number from 0 to ffff, "
+                              "e.g., '123:abcd'"))
     parser.add_argument("-m", "--mod", type=str, nargs="*",
                         help="kernel module(s) to unload before the action, and to load back after the action")
 
