@@ -8,7 +8,7 @@ Powers off/on usb devices by id
 
 positional arguments:
   {cycle,off,on}        action to perform: power-cycle, off or on
-  id                    usb device id in the form 'idVendor:idProduct' where both ids are 4-digit hex numbers
+  id                    usb device id in the form 'idVendor:idProduct', each id is a hex number from 0 to ffff, e.g., '123:abcd'
 
 options:
   -h, --help            show this help message and exit
